@@ -1,12 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <>
-            <div className='bg-gray-950 text-white p-3'>
+            <div className='footer'>
                 <h4 className='text-center'>
-                    All Rights Reserved &copy; <a href='https://chayanrastogi.github.io/Personal-Portfolio/' target='blank'><u>Chayan Rastogi</u></a>
+                    All Rights Reserved &copy;<Link to='https://chayanrastogi.github.io/Personal-Portfolio/' target='blank'>Chayan Rastogi</Link>
                 </h4>
+                <p className="text-center mt-3">
+                    <Link to='/about'>About</Link>
+                    |
+                    <Link to='/contact'>Contact</Link>
+                    |
+                    <Link to='/policy'>Privacy Policy</Link>
+
+                </p>
             </div>
         </>
     )
