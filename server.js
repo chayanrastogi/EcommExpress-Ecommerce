@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 //database config
-connectDB()
+connectDB();
 
 //middlewares
 app.use(express.json());
