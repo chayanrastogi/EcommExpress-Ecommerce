@@ -21,13 +21,15 @@
 }
 
 .active {
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px 	#5878dc;
+  color: 	#5878dc !important;
 }
 
 .navbar-brand {
   font-weight: 700;
   font-family: "Poppins", sans-serif;
   text-transform: none;
+  color: 	#5878dc !important;
 }
 
 .navbar-brand,
@@ -40,7 +42,7 @@
 /*===== footer===== */
 
 .footer {
-  color: black;
+  color: #454545;
   text-align: center;
   padding-top: 10px;
   font-family: "Blinker", sans-serif;
@@ -50,7 +52,7 @@
 }
 
 .footer a {
-  color: black;
+  color: #454545;
   text-decoration: none;
   font-weight: bold;
 }
@@ -63,7 +65,7 @@
 }
 
 .footer a:hover {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #454545;
 }
 
 /*===== page not found =====*/
