@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
-import toast  from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,24 +14,25 @@ const Register = () => {
     const [address, setAddress] = useState('');
     const navigate = useNavigate();
 
-    const handleFormSubmit = async(e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/api/v1/auth/register", {name, email, password, phone, address})
-            if(response.data.success){
-                toast.success("User Registered Successfully",{
-                    style:{
-                        background: "#5878dc",
-                        color: "#fff",
-                    },
+            const res = await axios.post("http://localhost:8080/api/v1/auth/register", { name, email, password, phone, address })
+            if (res && res.data.success) {
+                toast.success(res.data.message, {
+                    style: {
+                        backgroundColor: '#70b1e6',
+                        color: '#fff',
+                    }
                 });
-                navigate('/login');
-            }else{
-                toast.error(response.data.message, {
-                    style:{
-                        background: "#70b1e6",
-                        color: "#fff",
-                        fontWeight: "bold",
+                setTimeout(() => {
+                     navigate("/login");
+                }, 10);
+            } else {
+                toast.error(res.data.message, {
+                    style: {
+                        backgroundColor: '#70b1e6',
+                        color: '#fff',
                     }
                 });
             }
@@ -49,16 +50,16 @@ const Register = () => {
                         <h3>Register</h3>
                         <div className='input-fields'>
                             <div className="mb-3">
-                                <input type="text" className="form-control" id="exampleInputName1" value={name} onChange={(e) => setName(e.target.value)} autoComplete='off'  required placeholder='Full Name' aria-describedby="nameHelp" />
+                                <input type="text" className="form-control" id="exampleInputName1" value={name} onChange={(e) => setName(e.target.value)} autoComplete='off' required placeholder='Full Name' aria-describedby="nameHelp" />
                             </div>
                             <div className="mb-3">
-                                <input type="email" className="form-control" id="exampleInputEmail1" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='off'  required placeholder='Email' aria-describedby="emailHelp" />
+                                <input type="email" className="form-control" id="exampleInputEmail1" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='off' required placeholder='Email' aria-describedby="emailHelp" />
                             </div>
                             <div className="mb-3">
-                                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' required placeholder='Password' />
+                                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='off' required placeholder='Password' />
                             </div>
                             <div className="mb-3">
-                                <input type="tel" className="form-control" id="exampleInputPhone1" value={phone} onChange={(e) => setPhone(e.target.value)} required placeholder='Phone' />
+                                <input type="tel" className="form-control" id="exampleInputPhone1" value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete='off' required placeholder='Phone' />
                             </div>
                             <div className="mb-3">
                                 <input type="text" className="form-control" id="exampleInputAddress1" value={address} onChange={(e) => setAddress(e.target.value)} autoComplete='off' required placeholder='Address' />
