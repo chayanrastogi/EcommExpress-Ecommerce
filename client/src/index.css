@@ -253,3 +253,9 @@
   align-items: center;
   margin-bottom: 15px;
 }
+
+.logout{
+  color: #D83F31 !important;
+  border: none;
+}
+

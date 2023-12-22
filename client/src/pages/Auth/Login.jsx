@@ -3,12 +3,14 @@ import Layout from '../../components/Layout/Layout'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useAuth } from '../../context/auth';
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [auth, setAuth] = useAuth();
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +23,12 @@ const Login = () => {
                         color: '#fff',
                     }
                 });
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token,
+                })
+                localStorage.setItem('auth', JSON.stringify(res.data));
                 setTimeout(() => {
                     navigate("/");
                 }, 10);
