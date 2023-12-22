@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../../components/Layout/Layout'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
@@ -11,6 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [auth, setAuth] = useAuth();
+    const location = useLocation();
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ const Login = () => {
                 })
                 localStorage.setItem('auth', JSON.stringify(res.data));
                 setTimeout(() => {
-                    navigate("/");
+                    navigate( location.state || "/");
                 }, 10);
             } else {
                 toast.error(res.data.message, {
