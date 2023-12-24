@@ -140,7 +140,7 @@
 
 .reg-form {
   width: 400px;
-  height: 500px;
+  height: 550px;
   background-color: white;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 24px 48px;
@@ -184,7 +184,6 @@
   font-weight: bold;
   border: 2px solid #5675db;
   transition: all 0.5s;
-  margin-bottom: 15px;
   font-size: 18px;
   width: 50%;
 }
@@ -220,7 +219,7 @@
 @media screen and (max-width: 576px) {
   .reg-form {
     width: 300px;
-    height: 520px;
+    height: 560px;
     background-color: white;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
@@ -259,3 +258,6 @@
   border: none;
 }
 
+.login-form p {
+  font-size: 14px;
+}

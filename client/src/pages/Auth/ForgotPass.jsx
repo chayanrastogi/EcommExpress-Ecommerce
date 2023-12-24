@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
-import Layout from '../../components/Layout/Layout'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Layout from '../../components/Layout/Layout';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { useAuth } from '../../context/auth';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [answer, setAnswer] = useState('');
     const navigate = useNavigate();
-    const [auth, setAuth] = useAuth();
-    const location = useLocation();
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/api/v1/auth/login", { email, password })
+            const res = await axios.post("http://localhost:8080/api/v1/auth/register", { name, email, newPassword, phone, answer })
             if (res && res.data.success) {
                 toast.success(res.data.message, {
                     style: {
@@ -24,14 +23,8 @@ const Login = () => {
                         color: '#fff',
                     }
                 });
-                setAuth({
-                    ...auth,
-                    user: res.data.user,
-                    token: res.data.token,
-                })
-                localStorage.setItem('auth', JSON.stringify(res.data));
                 setTimeout(() => {
-                    navigate(location.state || "/");
+                    navigate("/login");
                 }, 10);
             } else {
                 toast.error(res.data.message, {
@@ -49,22 +42,25 @@ const Login = () => {
 
     return (
         <>
-            <Layout title="Login">
+            <Layout title="Register">
                 <div className="reg-bg">
                     <form className="login-form" onSubmit={handleFormSubmit}>
-                        <h3>Login</h3>
+                        <h3>Reset Password</h3>
                         <div className='input-fields'>
                             <div className="mb-3">
                                 <input type="email" className="form-control" id="exampleInputEmail1" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='off' required placeholder='Email' aria-describedby="emailHelp" />
                             </div>
-                            <div className="mb-3 password">
-                                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='off' required placeholder='Password' />
+                            <div className="mb-3">
+                                <input type="password" className="form-control" id="exampleInputPassword1" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} autoComplete='off' required placeholder='New-Password' />
                             </div>
+                            <div className="mb-3">
+                                <input type="text" className="form-control" id="exampleInputAddress1" value={answer} onChange={(e) => setAnswer(e.target.value)} autoComplete='off' required placeholder='Answer' />
+                            </div>
+
                             <div className='btn-container'>
-                                <button type="submit" className="btn submit">Login</button>
+                                <button type="submit" className="btn submit">Reset</button>
                             </div>
                         </div>
-                        <p><Link to="/register">Register</Link> | <Link to="/forgotpass">Forgot Password?</Link></p>
                     </form>
                 </div>
             </Layout>
@@ -72,4 +68,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register;

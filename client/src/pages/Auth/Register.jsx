@@ -12,6 +12,8 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
+    const [answer, setAnswer] = useState('');
+
     const navigate = useNavigate();
 
     const handleFormSubmit = async (e) => {
@@ -64,7 +66,9 @@ const Register = () => {
                             <div className="mb-3">
                                 <input type="text" className="form-control" id="exampleInputAddress1" value={address} onChange={(e) => setAddress(e.target.value)} autoComplete='off' required placeholder='Address' />
                             </div>
-
+                            <div className="mb-3">
+                                <input type="text" className="form-control" id="exampleInputAnswer1" value={answer} onChange={(e) => setAddress(e.target.value)} autoComplete='off' required placeholder='Answer' />
+                            </div>
                             <div className='btn-container'>
                                 <button type="submit" className="btn submit">Register</button>
                             </div>
