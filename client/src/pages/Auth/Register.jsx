@@ -19,7 +19,7 @@ const Register = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/api/v1/auth/register", { name, email, password, phone, address })
+            const res = await axios.post("http://localhost:8080/api/v1/auth/register", { name, email, password, phone, address, answer })
             if (res && res.data.success) {
                 toast.success(res.data.message, {
                     style: {
@@ -67,7 +67,7 @@ const Register = () => {
                                 <input type="text" className="form-control" id="exampleInputAddress1" value={address} onChange={(e) => setAddress(e.target.value)} autoComplete='off' required placeholder='Address' />
                             </div>
                             <div className="mb-3">
-                                <input type="text" className="form-control" id="exampleInputAnswer1" value={answer} onChange={(e) => setAddress(e.target.value)} autoComplete='off' required placeholder='Answer' />
+                                <input type="text" className="form-control" id="exampleInputAnswer1" value={answer} onChange={(e) => setAnswer(e.target.value)} autoComplete='off' required placeholder='Your Favourite Sport' />
                             </div>
                             <div className='btn-container'>
                                 <button type="submit" className="btn submit">Register</button>

@@ -15,8 +15,8 @@ const Register = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/api/v1/auth/register", { name, email, newPassword, phone, answer })
-            if (res && res.data.success) {
+            const res = await axios.post("http://localhost:8080/api/v1/auth/forgot-password", { email, newPassword, answer })
+            if (res.data.success) {
                 toast.success(res.data.message, {
                     style: {
                         backgroundColor: '#70b1e6',
@@ -42,7 +42,7 @@ const Register = () => {
 
     return (
         <>
-            <Layout title="Register">
+            <Layout title="Reset">
                 <div className="reg-bg">
                     <form className="login-form" onSubmit={handleFormSubmit}>
                         <h3>Reset Password</h3>
