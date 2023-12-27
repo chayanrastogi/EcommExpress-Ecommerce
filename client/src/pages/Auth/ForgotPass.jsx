@@ -30,7 +30,7 @@ const Register = () => {
                 toast.error(res.data.message, {
                     style: {
                         backgroundColor: '#70b1e6',
-                        color: '#fff',
+                        color: '#ffff',
                     }
                 });
             }
