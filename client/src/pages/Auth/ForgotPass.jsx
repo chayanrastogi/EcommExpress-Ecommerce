@@ -29,7 +29,7 @@ const Register = () => {
             } else {
                 toast.error(res.data.message, {
                     style: {
-                        backgroundColor: '#70b1e6',
+                        backgroundColor: '#70b1e6 ',
                         color: '#ffff',
                     }
                 });
